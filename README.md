@@ -1,2 +1,2 @@
-# C-Final
+# C++ Final
 Final program for C++
