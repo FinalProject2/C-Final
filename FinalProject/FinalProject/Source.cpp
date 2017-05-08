@@ -2,9 +2,12 @@
 #include <stdio.h>
 #include <windows.h>
 #include <string>
-#include <vector>
+#include <vector>	
+
+	
 
 using namespace std;
+
 char tmp_map[18][32];
 
 char map[18][32] = {
@@ -27,6 +30,8 @@ char map[18][32] = {
 	"|                             |",
 	"+#############################+"
 };
+
+                  
 
 void ShowMap()
 {
@@ -155,9 +160,13 @@ void FindPath(int sx, int sy, int x, int y){
 
 int main()
 {
+	SMALL_RECT r = { 500, 500, 450, 450 };
+
+	SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), TRUE, &r);
+
 	bool running = true;
 	int x = 15; // hero x
-	int y = 16; // hero y
+	int y = 16; // hero yw
 	int old_x;
 	int old_y;
 
@@ -166,12 +175,33 @@ int main()
 
 
 	int pts = 0;
+	    cout << "                  ###############              " << endl;
+		cout << "                ##################        " << endl;
+		cout << "              #######################         " << endl;
+		cout << "            ##############   ###########                  " << endl;
+		cout << "          ###############################                  " << endl;	
+		cout << "         #########################                 " << endl;
+		cout << "        #######################            " << endl;
+		cout << "       ####################            " << endl;
+		cout << "       ##################               " << endl;
+		cout << "       ################                 " << endl;
+		cout << "       #############                       " << endl;
+		cout << "        ###############            " << "PACMAN" << endl;
+		cout << "         ####################          " << endl;
+		cout << "          ########################         " << endl;
+		cout << "            ##########################                 " << endl;
+		cout << "             ############################                  " << endl;
+		cout << "               #######################                 " << endl;
+		cout << "                 ####################              " << endl;
+		cout << "                   ################            \n" << endl;
+	
 
-	printf("Instruction:\n1. Arrow Keys to move your hero\n2. Eat the dots produced by the Eater to gain poins\n3. Don't get caught by the Eater\n\n");
+	printf("Instructions:\n1. Arrow Keys to move your hero\n2. Eat the dots produced by the Ghost to gain poins\n3. Don't get caught by the Ghost\n\n");
 	printf("H -> Hard\nN -> Normal\nE -> Easy\n\nInput : ");
 
 	char diffi;
 	int speedmod = 3;
+
 
 	cin >> diffi;
 
