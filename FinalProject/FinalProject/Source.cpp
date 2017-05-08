@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-using namespace std;
+//using namespace std;
 char tmp_map[18][32];
 
 char map[18][32] = {
@@ -88,9 +88,9 @@ struct target {
 	short y;
 };
 
-vector<target> walk_queue;
+std::vector<target> walk_queue;
 
-vector<walk> BFSArray;
+std::vector<walk> BFSArray;
 
 void AddArray(int x, int y, int wc, int back){
 	if (tmp_map[y][x] == ' ' || tmp_map[y][x] == '.'){
@@ -173,7 +173,7 @@ int main()
 	char diffi;
 	int speedmod = 3;
 
-	cin >> diffi;
+	std::cin >> diffi;
 
 	if (diffi == 'N'){
 		speedmod = 2;
@@ -185,14 +185,14 @@ int main()
 	system("cls");
 	ShowMap();
 
-	gotoxy(x, y); cout << "H";
+	gotoxy(x, y); std::cout << "H";
 
 	int frame = 0;
 
 	FindPath(ex, ey, x, y);
 
 	while (running){
-		gotoxy(x, y); cout << " ";
+		gotoxy(x, y); std::cout << " ";
 
 		old_x = x;
 		old_y = y;
@@ -222,10 +222,10 @@ int main()
 			FindPath(ex, ey, x, y);
 		}
 
-		gotoxy(x, y); cout << "H";
+		gotoxy(x, y); std::cout << "H";
 
 		map[ey][ex] = '.';
-		gotoxy(ex, ey); cout << ".";
+		gotoxy(ex, ey); std::cout << ".";
 
 		if (frame%speedmod == 0 && walk_queue.size() != 0){
 			ex = walk_queue.back().x;
@@ -233,7 +233,7 @@ int main()
 			walk_queue.pop_back();
 		}
 
-		gotoxy(ex, ey); cout << "E";
+		gotoxy(ex, ey); std::cout << "E";
 
 		if (ex == x && ey == y){
 			break;
@@ -241,21 +241,21 @@ int main()
 
 
 		gotoxy(32, 18);
-		gotoxy(32, 1); cout << pts;
+		gotoxy(32, 1); std::cout << pts;
 		Sleep(100);
 		frame++;
 	}
 
 	system("cls");
 	printf("You Lose and your score is : %i", pts);
-	cin.get();
-	cin.get();
-	cin.get();
-	cin.get();
-	cin.get();
-	cin.get();
-	cin.get();
-	cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
 
 	return 0;
 }
