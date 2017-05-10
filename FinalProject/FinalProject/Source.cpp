@@ -8,35 +8,35 @@
 
 using namespace std;
 
-char tmp_map[18][32];
+char tmp_map[18][38];//map height and width
 
-char map[18][32] = {
-	"+#############################+",
-	"|                             |",
-	"|                             |",
-	"|## ########### ##   #########|",
-	"|   |                         |",
-	"| | |### |  |           |     |",
-	"| |      |  | |###  |   |  |  |",
-	"| | #####|  | |      ## |     |",
-	"| |           |###  |      |  |",
-	"| |##### ###         ##       |",
-	"|          ######  ####### ###|",
-	"|                             |",
-	"|# ### ####      ###   #######|",
-	"|                             |",
-	"|                             |",
-	"|                             |",
-	"|                             |",
-	"+#############################+"
+char map[18][38] = {
+	"+###################################+",
+	"|                                   |",
+	"|## ########### #   #######  #  ### |",
+	"|   |               |             | |",
+	"|   |    |  |       |   |    #####| |",
+	"| | |### |  |       |   |           |",
+	"| |      |  | |###  |   |  |      | |",
+	"| | #####|  | |      ## |         | |",
+	"| |           |###  |      |######| |",
+	"| |##### ###         ##           | |",
+	"| |    |   ######  ####### ###      |",
+	"|                                   |",
+	"|# ### ####      ###   ######  ###  |",
+	"|                |                  |",
+	"|#######  ###### ########  ### ###  |",
+	"|         |                |     |  |",
+	"|                                   |",
+	"+###################################+"
 };
 
-                  
+               
 
 void ShowMap()
 {
 	for (int i = 0; i < 18; i++) {
-		printf("%s\n", map[i]);
+		printf("%s\n", map[i]);//displays the map
 	}
 }
 
@@ -153,8 +153,7 @@ int main()
 	int ChoiceYes;
 
 
-
-	SMALL_RECT r = { 500, 500, 450, 450 };
+	SMALL_RECT r = { 500, 500, 450, 450 }; // Changes window size
 
 	SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), TRUE, &r);
 
@@ -191,19 +190,19 @@ int main()
 	
 
 	printf("Instructions:\n1. Use arrow Keys to move your hero\n2. Eat the dots produced by the Ghost to gain poins\n3. Don't get caught by the Ghost\n\n");
-	printf("H -> Hard\nN -> Normal\nE -> Easy\n\nInput : ");
+	printf("H -> Hard\nN -> Normal\nE -> Easy\n\nInput : ");  //start menu
 
 	char diffi;
-	int speedmod = 3;
+	int speedmod = 3;//hard difficulty 
 
 
 	cin >> diffi;
 
 	if (diffi == 'N'){
-		speedmod = 2;
+		speedmod = 2;//medium difficulty 
 	}
 	else if (diffi == 'H'){
-		speedmod = 1;
+		speedmod = 1;//easy difficulty 
 	}
 
 	system("cls");
@@ -222,22 +221,22 @@ int main()
 		old_y = y;
 
 		if (GetAsyncKeyState(VK_UP)){
-			if (map[y - 1][x] == '.'){ y--; pts++; }
+			if (map[y - 1][x] == '.'){ y--; pts++; }//controls
 			else
 			if (map[y - 1][x] == ' ') y--;
 		}
 		if (GetAsyncKeyState(VK_DOWN)){
-			if (map[y + 1][x] == '.'){ y++; pts++; }
+			if (map[y + 1][x] == '.'){ y++; pts++; }//controls
 			else
 			if (map[y + 1][x] == ' ') y++;
 		}
 		if (GetAsyncKeyState(VK_LEFT)){
-			if (map[y][x - 1] == '.'){ x--; pts++; }
+			if (map[y][x - 1] == '.'){ x--; pts++; }//controls
 			else
 			if (map[y][x - 1] == ' ') x--;
 		}
 		if (GetAsyncKeyState(VK_RIGHT)){
-			if (map[y][x + 1] == '.'){ x++; pts++; }
+			if (map[y][x + 1] == '.'){ x++; pts++; }//controls
 			else
 			if (map[y][x + 1] == ' ') x++;
 		}
@@ -246,7 +245,7 @@ int main()
 			FindPath(ex, ey, x, y);
 		}
 
-		gotoxy(x, y); cout << "H";
+		gotoxy(x, y); cout << "C";//Character for hero
 
 		map[ey][ex] = '.';
 		gotoxy(ex, ey); cout << ".";
@@ -257,7 +256,7 @@ int main()
 			walk_queue.pop_back();
 		}
 
-		gotoxy(ex, ey); cout << "E";
+		gotoxy(ex, ey); cout << "G";//Character for ghost
 
 		if (ex == x && ey == y){
 			break;
@@ -269,14 +268,14 @@ int main()
 		Sleep(100);
 		frame++;
 	}
-	if (pts == 150)
+	if (pts == 150)//required points to increase difficulty
 	{
 		char diffi;
 		speedmod = 2;
 		cin >> diffi;
 
 	}
-	else if (pts == 250)
+	else if (pts == 250)//required points to increase difficulty again
 	{
 		char diffi;
 		speedmod = 3;
@@ -284,10 +283,10 @@ int main()
 	}
 	system("cls");
 	printf("           You Lose and your score is : %i", pts);
-	printf("                                                ");
+	printf("                                                ");//Game Over screen
 	printf("                       Type 1 to play again!      ");
 	std::cin >> ChoiceYes;
-	if (ChoiceYes == 1)
+	if (ChoiceYes == 1)//if user types "1" they can play again
 	{
 		main();
 	}
