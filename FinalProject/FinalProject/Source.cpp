@@ -4,8 +4,30 @@
 #include <string>
 #include <vector>
 
-//using namespace std;
+
 char tmp_map[18][32];
+
+
+char map2[18][32] = {
+	"+#############################+",
+	"|                             |",
+	"|                             |",
+	"|                             |",
+	"|   |                         |",
+	"| | | |  |           |        |",
+	"| |      |  | |  |   |  |     |",
+	"| | |  | |       |            |",
+	"| |           | |          |  |",
+	"| |                           |",
+	"|                             |",
+	"|                             |",
+	"|                             |",
+	"|                             |",
+	"|                             |",
+	"|                             |",
+	"|                             |",
+	"+#############################+"
+};
 
 char map[18][32] = {
 	"+#############################+",
@@ -32,6 +54,12 @@ void ShowMap()
 {
 	for (int i = 0; i < 18; i++) {
 		printf("%s\n", map[i]);
+	}
+}
+void ShowMap2()
+{
+	for (int i = 0; i < 18; i++) {
+		printf("%s\n", map2[i]);
 	}
 }
 
@@ -167,8 +195,8 @@ int main()
 
 	int pts = 0;
 
-	printf("Instruction:\n1. Arrow Keys to move your hero\n2. Eat the dots produced by the Eater to gain poins\n3. Don't get caught by the Eater\n\n");
-	printf("H -> Hard\nN -> Normal\nE -> Easy\n\nInput : ");
+	std::cout<<("Instruction:\n1. Arrow Keys to move your hero\n2. Eat the dots produced by the Eater to gain poins\n3. Don't get caught by the Eater\n\n");
+	std::cout<<("H = Hard\nN = Normal\nE = Easy\n\nInput : ");
 
 	char diffi;
 	int speedmod = 3;
@@ -222,7 +250,7 @@ int main()
 			FindPath(ex, ey, x, y);
 		}
 
-		gotoxy(x, y); std::cout << "H";
+		gotoxy(x, y); std::cout << "M";
 
 		map[ey][ex] = '.';
 		gotoxy(ex, ey); std::cout << ".";
@@ -233,7 +261,7 @@ int main()
 			walk_queue.pop_back();
 		}
 
-		gotoxy(ex, ey); std::cout << "E";
+		gotoxy(ex, ey); std::cout << "B";
 
 		if (ex == x && ey == y){
 			break;
