@@ -140,17 +140,7 @@ void FindPath(int sx, int sy, int x, int y){
 		AddArray(BFSArray[i].x, BFSArray[i].y + 1, BFSArray[i].walk_count + 1, i);
 		AddArray(BFSArray[i].x, BFSArray[i].y - 1, BFSArray[i].walk_count + 1, i);
 
-		/*
-		AddArray( BFSArray[i].x+1, BFSArray[i].y+1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x-1, BFSArray[i].y+1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x+1, BFSArray[i].y+1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x+1, BFSArray[i].y-1, BFSArray[i].walk_count+1, i );
-
-		AddArray( BFSArray[i].x+1, BFSArray[i].y-1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x-1, BFSArray[i].y-1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x-1, BFSArray[i].y+1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x-1, BFSArray[i].y-1, BFSArray[i].walk_count+1, i );
-		*/
+		
 		i++;
 	}
 
@@ -279,14 +269,14 @@ int main()
 		Sleep(100);
 		frame++;
 	}
-	if (pts == 100)
+	if (pts == 150)
 	{
 		char diffi;
 		speedmod = 2;
 		cin >> diffi;
 
 	}
-	else if (pts == 200)
+	else if (pts == 250)
 	{
 		char diffi;
 		speedmod = 3;
