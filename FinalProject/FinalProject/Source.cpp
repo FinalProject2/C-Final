@@ -160,6 +160,10 @@ void FindPath(int sx, int sy, int x, int y){
 
 int main()
 {
+	int ChoiceYes;
+
+
+
 	SMALL_RECT r = { 500, 500, 450, 450 };
 
 	SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), TRUE, &r);
@@ -196,7 +200,7 @@ int main()
 		cout << "                   ################            \n" << endl;
 	
 
-	printf("Instructions:\n1. Arrow Keys to move your hero\n2. Eat the dots produced by the Ghost to gain poins\n3. Don't get caught by the Ghost\n\n");
+	printf("Instructions:\n1. Use arrow Keys to move your hero\n2. Eat the dots produced by the Ghost to gain poins\n3. Don't get caught by the Ghost\n\n");
 	printf("H -> Hard\nN -> Normal\nE -> Easy\n\nInput : ");
 
 	char diffi;
@@ -275,9 +279,29 @@ int main()
 		Sleep(100);
 		frame++;
 	}
+	if (pts == 100)
+	{
+		char diffi;
+		speedmod = 2;
+		cin >> diffi;
 
+	}
+	else if (pts == 200)
+	{
+		char diffi;
+		speedmod = 3;
+		cin >> diffi;
+	}
 	system("cls");
-	printf("You Lose and your score is : %i", pts);
+	printf("           You Lose and your score is : %i", pts);
+	printf("                                                ");
+	printf("                       Type 1 to play again!      ");
+	std::cin >> ChoiceYes;
+	if (ChoiceYes == 1)
+	{
+		main();
+	}
+
 	cin.get();
 	cin.get();
 	cin.get();
