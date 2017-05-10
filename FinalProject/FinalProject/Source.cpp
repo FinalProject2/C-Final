@@ -4,29 +4,30 @@
 #include <string>
 #include <vector>
 
-//using namespace std;
-char tmp_map[18][32];
+using namespace std;
+char tmp_map[18][38];//map height and width
 
-char map[18][32] = {
-	"+#############################+",
-	"|                             |",
-	"|                             |",
-	"|## ########### ##   #########|",
-	"|   |                         |",
-	"| | |### |  |           |     |",
-	"| |      |  | |###  |   |  |  |",
-	"| | #####|  | |      ## |     |",
-	"| |           |###  |      |  |",
-	"| |##### ###         ##       |",
-	"|          ######  ####### ###|",
-	"|                             |",
-	"|# ### ####      ###   #######|",
-	"|                             |",
-	"|                             |",
-	"|                             |",
-	"|                             |",
-	"+#############################+"
+char map[18][38] = {
+	"+###################################+",
+	"|                                   |",
+	"|## ########### #   #######  #  ### |",
+	"|   |               |             | |",
+	"|   |    |  |       |   |    #####| |",
+	"| | |### |  |       |   |           |",
+	"| |      |  | |###  |   |  |      | |",
+	"| | #####|  | |      ## |         | |",
+	"| |           |###  |      |######| |",
+	"| |##### ###         ##           | |",
+	"| |    |   ######  ####### ###      |",
+	"|                                   |",
+	"|# ### ####      ###   ######  ###  |",
+	"|                |                  |",
+	"|#######  ###### ########  ### ###  |",
+	"|         |                |     |  |",
+	"|                                   |",
+	"+###################################+"
 };
+
 
 void ShowMap()
 {
@@ -166,9 +167,29 @@ int main()
 
 
 	int pts = 0;
+	cout << "                  ###############              " << endl;
+	cout << "                ##################        " << endl;
+	cout << "              #######################         " << endl;
+	cout << "            ##############   ###########                  " << endl;
+	cout << "          ###############################                  " << endl;
+	cout << "         #########################                 " << endl;
+	cout << "        #######################            " << endl;
+	cout << "       ####################            " << endl;
+	cout << "       ##################               " << endl;
+	cout << "       ################                 " << endl;
+	cout << "       #############                       " << endl;
+	cout << "        ###############            " << "PACMAN" << endl;
+	cout << "         ####################          " << endl;
+	cout << "          ########################         " << endl;
+	cout << "            ##########################                 " << endl;
+	cout << "             ############################                  " << endl;
+	cout << "               #######################                 " << endl;
+	cout << "                 ####################              " << endl;
+	cout << "                   ################            \n" << endl;
 
-	printf("Instruction:\n1. Arrow Keys to move your hero\n2. Eat the dots produced by the Eater to gain poins\n3. Don't get caught by the Eater\n\n");
-	printf("H -> Hard\nN -> Normal\nE -> Easy\n\nInput : ");
+
+	printf("Instructions:\n1. Use arrow Keys to move your hero\n2. Eat the dots produced by the Ghost to gain poins\n3. Don't get caught by the Ghost\n\n");
+	printf("H -> Hard\nN -> Normal\nE -> Easy\n\nInput : ");  //start menu
 
 	char diffi;
 	int speedmod = 3;
