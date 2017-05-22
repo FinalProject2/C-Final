@@ -4,15 +4,64 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-char tmp_map[18][38];//map height and width
+
+char tmp_map3[18][38];//map height and width of map 3
+
+const char map3[18][38] = {
+	"+###################################+",
+	"|                                   |",
+	"|## ####  ##### #  ########  #  ### |",
+	"|   |               |             | |",
+	"|   |    |  |   3       |   ######| |",
+	"| | |### |  |       |   |           |",
+	"| |         | |###  |   |  |      | |",
+	"| |######|  | |      ## |  |      | |",
+	"|             |###  |      |######| |",
+	"| |##### ###         ##           | |",
+	"| |    |   #  #######_##### ###   | |",
+	"|                                   |",
+	"| |### ####   ###  ####  ######  ###|",
+	"|                |                  |",
+	"|# ##### ####### ########  ### ###  |",
+	"|         |                |     |  |",
+	"|         |                |        |",
+	"+###################################+"
+      
+};
+
+char tmp_map2[18][38];//map height and width of map 2
+
+char map2[18][38] = {
+	"+###################################+",
+	"|                                   |",
+	"|## ####  ##### #   #######  #  ### |",
+	"|   |               |             | |",
+	"|   |    |  |   2       |   ######| |",
+	"| | |### |  |       |   |           |",
+	"| |         | |###  |   |  |      | |",
+	"| |######|  | |      ## |         | |",
+	"|             |###  |      |######| |",
+	"| |##### ###         ##           | |",
+	"| |    |   #  ##### _##### ###      |",
+	"|                                   |",
+	"| |### ####   ###  ###   ######  ## |",
+	"|                |                  |",
+	"|#######  ###### ########  ### ###  |",
+	"|         |                |     |  |",
+	"|                                   |",
+	"+###################################+"
+};
+
+
+
+char tmp_map[18][38];//map height and width of map 1
 
 char map[18][38] = {
 	"+###################################+",
 	"|                                   |",
 	"|## ########### #   #######  #  ### |",
 	"|   |               |             | |",
-	"|   |    |  |       |   |    #####| |",
+	"|   |    |  |   1   |   |    #####| |",
 	"| | |### |  |       |   |           |",
 	"| |      |  | |###  |   |  |      | |",
 	"| | #####|  | |      ## |         | |",
@@ -26,6 +75,7 @@ char map[18][38] = {
 	"|         |                |     |  |",
 	"|                                   |",
 	"+###################################+"
+
 };
 
 
@@ -33,6 +83,18 @@ void ShowMap()
 {
 	for (int i = 0; i < 18; i++) {
 		printf("%s\n", map[i]);
+	}
+}
+void ShowMap2()
+{
+	for (int i = 0; i < 18; i++) {
+		printf("%s\n", map2[i]);
+	}
+}
+void ShowMap3()
+{
+	for (int i = 0; i < 18; i++) {
+		printf("%s\n", map3[i]);
 	}
 }
 
@@ -89,6 +151,9 @@ struct target {
 	short y;
 };
 
+
+
+
 std::vector<target> walk_queue;
 
 std::vector<walk> BFSArray;
@@ -136,17 +201,7 @@ void FindPath(int sx, int sy, int x, int y){
 		AddArray(BFSArray[i].x, BFSArray[i].y + 1, BFSArray[i].walk_count + 1, i);
 		AddArray(BFSArray[i].x, BFSArray[i].y - 1, BFSArray[i].walk_count + 1, i);
 
-		/*
-		AddArray( BFSArray[i].x+1, BFSArray[i].y+1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x-1, BFSArray[i].y+1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x+1, BFSArray[i].y+1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x+1, BFSArray[i].y-1, BFSArray[i].walk_count+1, i );
-
-		AddArray( BFSArray[i].x+1, BFSArray[i].y-1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x-1, BFSArray[i].y-1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x-1, BFSArray[i].y+1, BFSArray[i].walk_count+1, i );
-		AddArray( BFSArray[i].x-1, BFSArray[i].y-1, BFSArray[i].walk_count+1, i );
-		*/
+		
 		i++;
 	}
 
@@ -154,8 +209,11 @@ void FindPath(int sx, int sy, int x, int y){
 }
 
 
+
 int main()
 {
+	
+	int ChoiceYes;
 	bool running = true;
 	int x = 15; // hero x
 	int y = 16; // hero y
@@ -167,39 +225,44 @@ int main()
 
 
 	int pts = 0;
-	cout << "                  ###############              " << endl;
-	cout << "                ##################        " << endl;
-	cout << "              #######################         " << endl;
-	cout << "            ##############   ###########                  " << endl;
-	cout << "          ###############################                  " << endl;
-	cout << "         #########################                 " << endl;
-	cout << "        #######################            " << endl;
-	cout << "       ####################            " << endl;
-	cout << "       ##################               " << endl;
-	cout << "       ################                 " << endl;
-	cout << "       #############                       " << endl;
-	cout << "        ###############            " << "PACMAN" << endl;
-	cout << "         ####################          " << endl;
-	cout << "          ########################         " << endl;
-	cout << "            ##########################                 " << endl;
-	cout << "             ############################                  " << endl;
-	cout << "               #######################                 " << endl;
-	cout << "                 ####################              " << endl;
-	cout << "                   ################            \n" << endl;
+
+	
 
 
-	printf("Instructions:\n1. Use arrow Keys to move your hero\n2. Eat the dots produced by the Ghost to gain poins\n3. Don't get caught by the Ghost\n\n");
-	printf("H -> Hard\nN -> Normal\nE -> Easy\n\nInput : ");  //start menu
+	std::cout << "                  ###############              " << std::endl;
+	std::cout << "                ##################        " << std::endl;
+	std::cout << "              #######################         " << std::endl;
+	std::cout << "            ##############   ###########                  " << std::endl;
+	std::cout << "          ###############################                  " << std::endl;
+	std::cout << "         #########################                 " << std::endl;
+	std::cout << "        #######################            " << std::endl;
+	std::cout << "       ####################            " << std::endl;
+	std::cout << "       ##################               " << std::endl;
+	std::cout << "       ################                 " << std::endl;
+	std::cout << "       #############                       " << std::endl;
+	std::cout << "        ###############            " << "PACMAN" << std::endl;
+	std::cout << "         ####################          " << std::endl;
+	std::cout << "          ########################         " << std::endl;
+	std::cout << "            ##########################                 " << std::endl;
+	std::cout << "             ############################                  " << std::endl;
+	std::cout << "               #######################                 " << std::endl;
+	std::cout << "                 ####################              " << std::endl;
+	std::cout << "                   ################            \n" << std::endl;
 
-	char diffi;
-	int speedmod = 3;
 
-	std::cin >> diffi;
+	std::cout << "Instructions:\n1. Use arrow Keys to move your character\n2. Eat the dots made by the Ghost to gain poins\n3. Don't get caught by the Ghost\n\n";
+	std::cout << "E = Easy\nN = Normal\nH = Hard\n\nChoose your difficulty : ";  //start menu
 
-	if (diffi == 'N'){
+
+	char difficulty;
+	int speedmod = 3;//easy difficulty
+
+	std::cin >> difficulty;
+
+	if (difficulty == 'N' || difficulty == 'n'){//meduim difficulty
 		speedmod = 2;
 	}
-	else if (diffi == 'H'){
+	else if (difficulty == 'H' || difficulty == 'h'){//hard difficulty
 		speedmod = 1;
 	}
 
@@ -212,29 +275,29 @@ int main()
 
 	FindPath(ex, ey, x, y);
 
-	while (running){
+	do{
 		gotoxy(x, y); std::cout << " ";
 
 		old_x = x;
 		old_y = y;
 
 		if (GetAsyncKeyState(VK_UP)){
-			if (map[y - 1][x] == '.'){ y--; pts++; }
+			if (map[y - 1][x] == '.'){ y--; pts++; }//controls for user (up) and point counter
 			else
 			if (map[y - 1][x] == ' ') y--;
 		}
 		if (GetAsyncKeyState(VK_DOWN)){
-			if (map[y + 1][x] == '.'){ y++; pts++; }
+			if (map[y + 1][x] == '.'){ y++; pts++; }//controls for user (down) and point counter
 			else
 			if (map[y + 1][x] == ' ') y++;
 		}
 		if (GetAsyncKeyState(VK_LEFT)){
-			if (map[y][x - 1] == '.'){ x--; pts++; }
+			if (map[y][x - 1] == '.'){ x--; pts++; }//controls for user (left) and point counter
 			else
 			if (map[y][x - 1] == ' ') x--;
 		}
 		if (GetAsyncKeyState(VK_RIGHT)){
-			if (map[y][x + 1] == '.'){ x++; pts++; }
+			if (map[y][x + 1] == '.'){ x++; pts++; }//controls for user (right) and point counter
 			else
 			if (map[y][x + 1] == ' ') x++;
 		}
@@ -243,7 +306,7 @@ int main()
 			FindPath(ex, ey, x, y);
 		}
 
-		gotoxy(x, y); std::cout << "H";
+		gotoxy(x, y); std::cout << "C";//user character
 
 		map[ey][ex] = '.';
 		gotoxy(ex, ey); std::cout << ".";
@@ -254,7 +317,7 @@ int main()
 			walk_queue.pop_back();
 		}
 
-		gotoxy(ex, ey); std::cout << "E";
+		gotoxy(ex, ey); std::cout << "G";//ghost Character
 
 		if (ex == x && ey == y){
 			break;
@@ -265,18 +328,177 @@ int main()
 		gotoxy(32, 1); std::cout << pts;
 		Sleep(100);
 		frame++;
+
+		
+		
+
+	} while (running == true && pts < 25);
+
+
+	if (pts == 25)
+			ShowMap2();
+
+		gotoxy(x, y); std::cout << "H";
+
+		int frame = 0;
+
+		FindPath(ex, ey, x, y);
+		
+
+	do{//second 
+		gotoxy(x, y); std::cout << " ";
+
+		old_x = x;
+		old_y = y;
+
+		if (GetAsyncKeyState(VK_UP)){
+			if (map2[y - 1][x] == '.'){ y--; pts++; }//controls for user
+			else
+			if (map2[y - 1][x] == ' ') y--;
+		}
+		if (GetAsyncKeyState(VK_DOWN)){
+			if (map2[y + 1][x] == '.'){ y++; pts++; }//controls for user
+			else
+			if (map2[y + 1][x] == ' ') y++;
+		}
+		if (GetAsyncKeyState(VK_LEFT)){
+			if (map2[y][x - 1] == '.'){ x--; pts++; }//controls for user
+			else
+			if (map2[y][x - 1] == ' ') x--;
+		}
+		if (GetAsyncKeyState(VK_RIGHT)){
+			if (map2[y][x + 1] == '.'){ x++; pts++; }//controls for user
+			else
+			if (map2[y][x + 1] == ' ') x++;
+		}
+
+		if (old_x != x || old_y != y){
+			FindPath(ex, ey, x, y);
+		}
+
+		gotoxy(x, y); std::cout << "C";//user character
+
+		map2[ey][ex] = '.';
+		gotoxy(ex, ey); std::cout << ".";
+
+		if (frame%speedmod == 0 && walk_queue.size() != 0){
+			ex = walk_queue.back().x;
+			ey = walk_queue.back().y;
+			walk_queue.pop_back();
+		}
+
+		gotoxy(ex, ey); std::cout << "G";//ghost Character
+
+		if (ex == x && ey == y){
+			break;
+		}
+
+		gotoxy(32, 18);
+		gotoxy(32, 1); std::cout << pts;
+		Sleep(100);
+		frame++;
+
+	} while (running == true && pts >= 25);
+
+
+	if (pts >= 50)
+		ShowMap3();
+
+	gotoxy(x, y); std::cout << "H";
+
+	int frame = 0;
+
+	FindPath(ex, ey, x, y);
+	do{//Third
+		gotoxy(x, y); std::cout << " ";
+
+		old_x = x;
+		old_y = y;
+
+		if (GetAsyncKeyState(VK_UP)){
+			if (map3[y - 1][x] == '.'){ y--; pts++; }//controls for user
+			else
+			if (map3[y - 1][x] == ' ') y--;
+		}
+		if (GetAsyncKeyState(VK_DOWN)){
+			if (map3[y + 1][x] == '.'){ y++; pts++; }//controls for user
+			else
+			if (map3[y + 1][x] == ' ') y++;
+		}
+		if (GetAsyncKeyState(VK_LEFT)){
+			if (map3[y][x - 1] == '.'){ x--; pts++; }//controls for user
+			else
+			if (map3[y][x - 1] == ' ') x--;
+		}
+		if (GetAsyncKeyState(VK_RIGHT)){
+			if (map3[y][x + 1] == '.'){ x++; pts++; }//controls for user
+			else
+			if (map3[y][x + 1] == ' ') x++;
+		}
+
+		if (old_x != x || old_y != y){
+			FindPath(ex, ey, x, y);
+		}
+
+		gotoxy(x, y); std::cout << "C";//user character
+
+		map3[ey][ex] = '.';
+		gotoxy(ex, ey); std::cout << ".";
+
+		if (frame%speedmod == 0 && walk_queue.size() != 0){
+			ex = walk_queue.back().x;
+			ey = walk_queue.back().y;
+			walk_queue.pop_back();
+		}
+
+		gotoxy(ex, ey); std::cout << "G";//ghost Character
+
+		if (ex == x && ey == y){
+			break;
+		}
+
+		gotoxy(32, 18);
+		gotoxy(32, 1); std::cout << pts;
+		Sleep(100);
+		frame++;
+
+	} while (running == true && pts >= 50);
+	
+	
+	int HighScore = 0 + pts;
+	
+	if (pts >= HighScore)
+	{
+		HighScore = HighScore;
+		
 	}
 
-	system("cls");
-	printf("You Lose and your score is : %i", pts);
-	std::cin.get();
-	std::cin.get();
-	std::cin.get();
-	std::cin.get();
-	std::cin.get();
-	std::cin.get();
-	std::cin.get();
-	std::cin.get();
+		system("cls");
 
-	return 0;
+		printf("           You Lose and your score is : %i", pts);
+
+		printf("              The high Score is : %i\n", HighScore);
+
+
+		printf("               Type 1 to play again!      ");
+
+
+		std::cin >> ChoiceYes;
+		if (ChoiceYes == 1)//if user types "1" they can play again
+		{
+			main();
+		}
+		std::cin.get();
+		std::cin.get();
+		std::cin.get();
+		std::cin.get();
+		std::cin.get();
+		std::cin.get();
+		std::cin.get();
+		std::cin.get();
+
+		return 0;
+
+	
+
 }
