@@ -254,7 +254,7 @@ int main()
 	std::cout << "E = Easy\nN = Normal\nH = Hard\n\nChoose your difficulty : ";  //start menu
 
 
-	char difficulty;
+	char difficulty;// the difficulty is choosen based on user input in start menu. 
 	int speedmod = 3;//easy difficulty
 
 	std::cin >> difficulty;
@@ -442,7 +442,7 @@ int main()
 
 		gotoxy(x, y); std::cout << "C";//user character
 
-		map3[ey][ex] = '.';
+		map2[ey][ex] = '.';
 		gotoxy(ex, ey); std::cout << ".";
 
 		if (frame%speedmod == 0 && walk_queue.size() != 0){
